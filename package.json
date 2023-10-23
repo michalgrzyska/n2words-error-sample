@@ -1,0 +1,26 @@
+{
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "build:seed": "copyfiles -u 3 src/seeding/assets/**/* lib/seeding/assets && npm run build",
+    "serve": "npm run build && firebase emulators:start --import invoicedata --export-on-exit invoicedata",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "stop": "npx kill-port 3000 8080 9000 5001 5000 9199",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "n2words": "^1.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.7",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
